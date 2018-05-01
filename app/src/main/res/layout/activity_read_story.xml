@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context="com.beeblebroxlabs.storytime.presentation.activity.ReadStoryActivity">
+
+  <android.support.v7.widget.Toolbar
+    android:id="@+id/story_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="?attr/colorPrimary"
+    android:elevation="8dp">
+
+    <TextView
+      android:id="@+id/toolbar_title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="left"
+      android:fontFamily="@font/alegreya_bold"
+      android:textSize="20sp" />
+
+  </android.support.v7.widget.Toolbar>
+
+  <android.support.v4.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="fill_vertical"
+    android:fillViewport="true">
+
+    <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:paddingBottom="80dp"
+      android:layout_marginTop="?attr/actionBarSize">
+
+      <ImageView
+        android:id="@+id/contentImageView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/story_row_height"
+        android:contentDescription="@string/content_imageView"
+        android:elevation="4dp"
+        android:fitsSystemWindows="true"
+        android:scaleType="fitXY" />
+
+      <TextView
+        android:id="@+id/contentTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/contentImageView"
+        android:paddingTop="15dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:fontFamily="@font/alegreya"
+        android:lineSpacingMultiplier="1.2"
+        android:textAlignment="textStart"
+        android:textSize="20sp" />
+
+
+    </RelativeLayout>
+  </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>
+
+
+

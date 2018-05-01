@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "639552205012",
+    "firebase_url": "https://storytime-9ff4d.firebaseio.com",
+    "project_id": "storytime-9ff4d",
+    "storage_bucket": "storytime-9ff4d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:639552205012:android:c6ed927ecac32787",
+        "android_client_info": {
+          "package_name": "com.beeblebroxlabs.storytime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "639552205012-nf1h2lmjma0p50kovlh3n4pp2tqp5d1u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.beeblebroxlabs.storytime",
+            "certificate_hash": "e32461e85a0df7ef2d4838190073c57a35560eb3"
+          }
+        },
+        {
+          "client_id": "639552205012-ug53vk0ogfh02id29s36ktobpaq7cjru.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0d8js4OEDevI3Jha5qlCUJX9_7rstAXc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "639552205012-ug53vk0ogfh02id29s36ktobpaq7cjru.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

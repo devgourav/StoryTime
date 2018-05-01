@@ -1,0 +1,26 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <CheckBoxPreference
+    android:defaultValue="false"
+    android:key="NIGHT_MODE"
+    android:title="Night Mode"
+    android:summary="Enable Night Mode"
+    android:textSize="18dp"/>
+
+  <CheckBoxPreference
+    android:defaultValue="false"
+    android:key="WIFI_ONLY"
+    android:title="Limit Data usage"
+    android:summary="Update new stories only on WIFI"
+    android:textSize="18dp"/>
+
+  <CheckBoxPreference
+    android:defaultValue="true"
+    android:key="NEW_STORY_NOTIFY"
+    android:title="Notify new stories"
+    android:summary="Send notification when a new story is available"
+    android:textSize="18dp"/>
+
+
+
+</PreferenceScreen>

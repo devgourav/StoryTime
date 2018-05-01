@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/content_frame"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context="com.beeblebroxlabs.storytime.presentation.activity.SettingsActivity">
+
+
+  <android.support.v7.widget.Toolbar
+    android:id="@+id/settings_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/primaryColor"
+    android:elevation="4dp"
+    app:navigationIcon="?attr/homeAsUpIndicator">
+    <TextView
+      android:id="@+id/settings_toolbar_title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="left"
+      android:fontFamily="@font/alegreya_bold"
+      android:text="@string/action_settings"
+      android:textSize="20sp" />
+  </android.support.v7.widget.Toolbar>
+
+
+  <fragment android:name="com.beeblebroxlabs.storytime.SettingsFragment"
+    android:id="@+id/settings_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+
+
+</LinearLayout>

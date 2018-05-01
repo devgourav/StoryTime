@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:orientation="horizontal">
+
+  <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_load_spinKitView"
+    style="@style/SpinKitView.DoubleBounce"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:layout_gravity="center_vertical"
+    app:SpinKit_Color="@color/secondaryColor" />
+
+  <ImageView
+    android:id="@+id/storyImage"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/story_row_height"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentEnd="true"
+    android:tint="?attr/tintColor"
+    android:scaleType="fitXY"/>
+  <TextView
+    android:id="@+id/titleText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:elevation="4dp"
+    android:fontFamily="@font/alegreya_bold_italic"
+    android:text="Sample Text View"
+    android:textColor="@color/primaryTextColor"
+    android:textSize="24sp" />
+
+
+</RelativeLayout>

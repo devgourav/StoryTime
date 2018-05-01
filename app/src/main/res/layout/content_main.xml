@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context="com.beeblebroxlabs.storytime.presentation.activity.MainActivity">
+
+
+  <com.github.ybq.android.spinkit.SpinKitView
+    android:id="@+id/all_load_spinKitVew"
+    style="@style/SpinKitView.Large.RotatingCircle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="120dp"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:layout_gravity="center"
+    app:SpinKit_Color="@color/secondaryColor" />
+  <android.support.v7.widget.RecyclerView
+    android:id="@+id/story_recycler_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:scrollbars="vertical"/>
+
+
+</RelativeLayout>
