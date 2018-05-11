@@ -4,25 +4,17 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.provider.Settings;
-import android.support.annotation.ColorInt;
 import android.support.design.widget.NavigationView;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.ImageViewCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AlertDialog.Builder;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatDelegate;
-import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.LayoutManager;
@@ -31,12 +23,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import com.StoryTimeApplication;
 import com.beeblebroxlabs.storytime.R;
 import com.beeblebroxlabs.storytime.logic.FirebaseDatabaseUtil;
 import com.beeblebroxlabs.storytime.logic.NetworkUtil;
@@ -44,9 +34,10 @@ import com.beeblebroxlabs.storytime.logic.Story;
 import com.beeblebroxlabs.storytime.presentation.RecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.github.ybq.android.spinkit.SpinKitView;
 import com.github.ybq.android.spinkit.style.RotatingCircle;
-import com.github.ybq.android.spinkit.style.Wave;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -82,6 +73,17 @@ public class MainActivity extends AppCompatActivity
 
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+
+    AdView mAdView;
+
+    MobileAds.initialize(this, String.valueOf(R.string.admob_app_id));
+
+    mAdView = findViewById(R.id.mainAdView);
+    AdRequest adRequest = new AdRequest.Builder().build();
+    mAdView.loadAd(adRequest);
+
+
+
     Toolbar toolbar = findViewById(R.id.main_toolbar);
     toolbar.setTitle("");
     toolbar.setSubtitle("");
@@ -244,7 +246,7 @@ public class MainActivity extends AppCompatActivity
     super.onResume();
 
     if(prefs.getBoolean("first_run",true)){
-      prefs.edit().putBoolean("first_run",false).commit();
+      prefs.edit().putBoolean("first_run", false).apply();
     }
     if (mBundleRecyclerViewState != null) {
       Parcelable listState = mBundleRecyclerViewState.getParcelable(LIST_STATE_KEY);

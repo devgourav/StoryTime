@@ -28,5 +28,10 @@
 
   <string name="database_rw_error_message">Stories could not be saved</string>
 
+  <string name="admob_app_id">ca-app-pub-7701527550430940~7328420442</string>
+  <string name="mainBannerAd">ca-app-pub-7701527550430940/6156360450</string>
+  <string name="storyBannerAd">ca-app-pub-7701527550430940/6156360450</string>
+  <string name="test_app_id"> ca-app-pub-3940256099942544~3347511713</string>
+
 
 </resources>

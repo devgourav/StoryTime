@@ -6,12 +6,10 @@ import static java.lang.Boolean.TRUE;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -24,9 +22,13 @@ import butterknife.ButterKnife;
 import com.beeblebroxlabs.storytime.R;
 import com.beeblebroxlabs.storytime.database.SavedStory;
 import com.beeblebroxlabs.storytime.logic.Story;
-import com.beeblebroxlabs.storytime.presentation.ShowSavedStoriesViewModel;
 import com.beeblebroxlabs.storytime.logic.StoryAsyncTask;
+import com.beeblebroxlabs.storytime.presentation.ShowSavedStoriesViewModel;
 import com.bumptech.glide.Glide;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -76,6 +78,40 @@ public class ReadStoryActivity extends AppCompatActivity {
 
     ButterKnife.bind(this);
 
+    MobileAds.initialize(this, String.valueOf(R.string.admob_app_id));
+    AdView mAdView = findViewById(R.id.storyAdView);
+    AdRequest adRequest = new AdRequest.Builder().build();
+
+    mAdView.setAdListener(new AdListener() {
+      @Override
+      public void onAdLoaded() {
+      }
+
+      @Override
+      public void onAdClosed() {
+        Toast.makeText(getApplicationContext(), "Ad is closed!", Toast.LENGTH_SHORT).show();
+      }
+
+      @Override
+      public void onAdFailedToLoad(int errorCode) {
+        Toast.makeText(getApplicationContext(), "Ad failed to load! error code: " + errorCode,
+            Toast.LENGTH_SHORT).show();
+      }
+
+      @Override
+      public void onAdLeftApplication() {
+        Toast.makeText(getApplicationContext(), "Ad left application!", Toast.LENGTH_SHORT).show();
+      }
+
+      @Override
+      public void onAdOpened() {
+        super.onAdOpened();
+      }
+    });
+
+    mAdView.loadAd(adRequest);
+
+
     Intent intent = getIntent();
     savedStory = new SavedStory(-1,FALSE);
     mFirebaseDatabase = FirebaseDatabase.getInstance();
@@ -99,14 +135,17 @@ public class ReadStoryActivity extends AppCompatActivity {
       @Override
       public void onDataChange(DataSnapshot dataSnapshot) {
         Story story = dataSnapshot.getValue(Story.class);
+        StorageReference storageReference;
 
-        contentTextView.setText(story.getContent().replace("_n", "\n"));
-        toolbarTitle.setText(story.getTitle());
+        if (story != null) {
+          contentTextView.setText(story.getContent().replace("_n", "\n"));
+          toolbarTitle.setText(story.getTitle());
+          storageReference = mStoryImageStorageReference.child(story.getPhotoUrl());
+          Glide.with(getApplicationContext())
+              .load(storageReference)
+              .into(contentImageView);
+        }
 
-        StorageReference storageReference = mStoryImageStorageReference.child(story.getPhotoUrl());
-        Glide.with(getApplicationContext())
-            .load(storageReference)
-            .into(contentImageView);
       }
 
       @Override
