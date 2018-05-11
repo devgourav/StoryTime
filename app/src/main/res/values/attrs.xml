@@ -7,7 +7,5 @@
   <attr name="backgroundCardColor" format="color"/>
   <attr name="iconPlaceholder" format="integer"/>
   <attr name="tintColor" format="color"/>
-  <attr format="dimension" name="actionBarSize" />
-  <attr format="color" name="colorPrimary" />
 </declare-styleable>
 </resources>

@@ -2,25 +2,12 @@ package com.beeblebroxlabs.storytime.presentation.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import android.os.Build;
-import android.preference.Preference;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatDelegate;
-import android.support.v7.app.AppCompatDelegate.NightMode;
 import android.support.v7.widget.Toolbar;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import com.beeblebroxlabs.storytime.R;
-import com.beeblebroxlabs.storytime.SettingsFragment;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -48,6 +35,16 @@ public class SettingsActivity extends AppCompatActivity {
       }
     };
     prefs.registerOnSharedPreferenceChangeListener(prefListener);
+
+  }
+
+  @Override
+  public void onBackPressed() {
+    super.onBackPressed();
+
+    Intent intent = new Intent(this, MainActivity.class);
+    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+    startActivity(intent);
 
   }
 

@@ -17,7 +17,6 @@ import android.support.v7.app.AlertDialog.Builder;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -35,6 +34,7 @@ import com.beeblebroxlabs.storytime.presentation.RecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.github.ybq.android.spinkit.style.RotatingCircle;
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -81,6 +81,32 @@ public class MainActivity extends AppCompatActivity
     mAdView = findViewById(R.id.mainAdView);
     AdRequest adRequest = new AdRequest.Builder().build();
     mAdView.loadAd(adRequest);
+
+    mAdView.setAdListener(new AdListener() {
+      @Override
+      public void onAdLoaded() {
+      }
+
+      @Override
+      public void onAdClosed() {
+        Log.i(TAG, "Ad is closed!");
+      }
+
+      @Override
+      public void onAdFailedToLoad(int errorCode) {
+        Log.i(TAG, "Ad failed to load! error code: " + errorCode);
+      }
+
+      @Override
+      public void onAdLeftApplication() {
+        Log.i(TAG, "Ad left application! ");
+      }
+
+      @Override
+      public void onAdOpened() {
+        super.onAdOpened();
+      }
+    });
 
 
 
@@ -140,7 +166,9 @@ public class MainActivity extends AppCompatActivity
 
     adapter = new RecyclerAdapter(options, getApplicationContext(), mStoryImageStorageReference);
 
-    LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+    LinearLayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+    mLayoutManager.setReverseLayout(true);
+    mLayoutManager.setStackFromEnd(true);
     mRecyclerView.setLayoutManager(mLayoutManager);
     mRecyclerView.setAdapter(adapter);
 

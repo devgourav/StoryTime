@@ -89,18 +89,17 @@ public class ReadStoryActivity extends AppCompatActivity {
 
       @Override
       public void onAdClosed() {
-        Toast.makeText(getApplicationContext(), "Ad is closed!", Toast.LENGTH_SHORT).show();
+        Log.i(TAG, "Ad is closed!");
       }
 
       @Override
       public void onAdFailedToLoad(int errorCode) {
-        Toast.makeText(getApplicationContext(), "Ad failed to load! error code: " + errorCode,
-            Toast.LENGTH_SHORT).show();
+        Log.i(TAG, "Ad failed to load! error code: " + errorCode);
       }
 
       @Override
       public void onAdLeftApplication() {
-        Toast.makeText(getApplicationContext(), "Ad left application!", Toast.LENGTH_SHORT).show();
+        Log.i(TAG, "Ad left application! ");
       }
 
       @Override
